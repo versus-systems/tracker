@@ -5,4 +5,9 @@ class DomainWorldDriver < WorldDriver
     super
   end
 
+  def request_list collection_type, params
+    @results, e = "List#{collection_type.camelize}".constantize.new(params).call
+    @errors.push *e
+  end
+
 end

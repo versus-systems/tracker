@@ -9,8 +9,8 @@ require 'active_cucumber'
 require 'rspec/collection_matchers'
 require 'factory_girl_rails'
 
-$:.unshift 'spec'
-$:.unshift 'spec/support'
+$LOAD_PATH.unshift 'spec'
+$LOAD_PATH.unshift 'spec/support'
 
 # Capybara defaults to CSS3 selectors rather than XPath.
 # If you'd prefer to use XPath, just uncomment this line and adjust any
@@ -39,7 +39,7 @@ ActionController::Base.allow_rescue = false
 begin
   DatabaseCleaner.strategy = :transaction
 rescue NameError
-  raise "You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it."
+  raise 'You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it.'
 end
 
 # You may also want to configure DatabaseCleaner to use different strategies for certain features and scenarios.
@@ -61,6 +61,9 @@ end
 # The :transaction strategy is faster, but might give you threading problems.
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
 Cucumber::Rails::Database.javascript_strategy = :truncation
+
+Dir[Rails.root.join('features/support/helpers/*.rb')].each { |f| require f }
+include Helpers::TableHelpers
 
 require Rails.root.join 'features/support/world_drivers/world_driver.rb'
 require Rails.root.join 'features/support/world_drivers/api_world_driver.rb'

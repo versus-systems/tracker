@@ -9,6 +9,7 @@ gem 'puma'
 gem 'rack-cors'
 gem 'rails', '4.2.6'
 gem 'rails-api'
+gem 'swagger-docs'
 
 group :development, :test do
   gem 'active_cucumber'
@@ -17,6 +18,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'dotenv'
   gem 'factory_girl_rails'
+  gem 'hashdiff'
   gem 'rack-test'
   gem 'rspec-collection_matchers'
   gem 'rspec-rails'
@@ -34,5 +36,4 @@ end
 group :development do
   gem 'annotate'
   gem 'spring'
-  gem 'swagger-docs'
 end

@@ -11,9 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20160526161257) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "uuid-ossp"
+
+  create_table "projects", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "state",       default: 10
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "projects", ["name"], name: "index_projects_on_name", unique: true, using: :btree
 
 end
