@@ -21,4 +21,11 @@ class ApiWorldDriver < WorldDriver
     end
   end
 
+  def create_project attributes
+    result = post '/v1/projects', attributes
+    if body[:errors].present?
+      @errors.push *body[:errors]
+    end
+  end
+
 end

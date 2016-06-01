@@ -19,6 +19,7 @@ group :development, :test do
   gem 'dotenv'
   gem 'factory_girl_rails'
   gem 'hashdiff'
+  gem 'mortadella'
   gem 'rack-test'
   gem 'rspec-collection_matchers'
   gem 'rspec-rails'

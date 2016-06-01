@@ -101,11 +101,12 @@ GEM
     mime-types-data (3.2016.0521)
     mini_portile2 (2.0.0)
     minitest (5.9.0)
+    mortadella (1.0.0)
     multi_json (1.12.1)
     multi_test (0.1.2)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
-    parser (2.3.1.0)
+    parser (2.3.1.1)
       ast (~> 2.2)
     pg (0.18.4)
     powerpack (0.1.1)
@@ -219,6 +220,7 @@ DEPENDENCIES
   dotenv
   factory_girl_rails
   hashdiff
+  mortadella
   pg
   puma
   rack-cors

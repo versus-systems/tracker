@@ -10,4 +10,9 @@ class DomainWorldDriver < WorldDriver
     @errors.push *e
   end
 
+  def create_project params
+    project = Project.create params
+    @errors.push *project.errors.full_messages
+  end
+
 end

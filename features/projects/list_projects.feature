@@ -6,8 +6,6 @@ Feature: Listing projects
   - if a page that is too high is requested, the last page is returned
   - if a negative page_size is requested, the default size is used
 
-  Background:
-
 
   Scenario: No parameters are specified and there are 26 projects
     Given 26 projects
