@@ -18,6 +18,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'dotenv'
   gem 'factory_girl_rails'
+  gem 'faker'
   gem 'hashdiff'
   gem 'mortadella'
   gem 'rack-test'
@@ -27,6 +28,7 @@ group :development, :test do
   gem 'shoulda'
   gem 'simplecov'
   gem 'simplecov-html'
+  gem 'pry'
 end
 
 group :test do
