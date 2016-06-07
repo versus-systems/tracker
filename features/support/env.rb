@@ -75,6 +75,10 @@ def d
   @world_driver
 end
 
+def a
+  ApiWorldDriver.new
+end
+
 Before do
   @world_driver = "#{DESIRED_WORLD}WorldDriver".constantize.new
 end

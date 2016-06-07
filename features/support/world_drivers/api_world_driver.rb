@@ -29,4 +29,20 @@ class ApiWorldDriver < WorldDriver
     end
   end
 
+  def create_task attributes
+    result = post '/v1/projects', { project: attributes }
+    body = JSON.parse(result.body).deep_symbolize_keys
+    if body[:errors].present?
+      @errors.push *body[:errors]
+    end
+  end
+
+  def delete_task params
+    result = delete "/v1/projects/#{params[:project_id]}/tasks/#{params[:id]}"
+    body = JSON.parse(result.body).deep_symbolize_keys
+    if body[:errors].present?
+      @errors.push *body[:errors]
+    end
+  end
+
 end
