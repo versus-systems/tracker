@@ -20,6 +20,8 @@ class Project < ActiveRecord::Base
 
   after_initialize :set_default_state
 
+  has_many :tasks, inverse_of: :project
+
   enum state: {
     disabled: -1,
     active: 10,
