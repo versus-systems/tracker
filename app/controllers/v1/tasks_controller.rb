@@ -3,6 +3,7 @@ module V1
 
     swagger_api :index do
       summary 'List all tasks for a Project'
+      param :path, :project_id, :string, :required, 'Id of Project to get tasks for'
       param :query, :page, :integer, :optional, 'page number of results, default 1'
       param :query, :page_size, :integer, :optional, 'number of results per page, default 25'
     end

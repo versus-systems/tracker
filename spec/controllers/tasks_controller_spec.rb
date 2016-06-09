@@ -15,7 +15,7 @@ RSpec.describe V1::TasksController, type: :controller do
       expect(result_hash['tasks'].length).to eql(25)
     end
 
-    it 'should return error message for non existing project' do
+    it 'should return no items for non existing project' do
       # Given
       dummy_project_id = 1
 
