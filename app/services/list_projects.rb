@@ -1,5 +1,6 @@
 class ListProjects < ListCollection
 
+  # TODO: Fix spelling error
   attr_defaultable :project_respository, -> { Project }
   attr_defaultable :result_serializer, -> { V1::ProjectSerializer }
 
