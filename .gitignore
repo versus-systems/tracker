@@ -19,3 +19,8 @@
 # Ignore gemset files
 /.ruby-gemset
 /.ruby-version
+
+*.swp
+*.swo
+tags
+.DS_STORE
