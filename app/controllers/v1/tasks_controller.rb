@@ -4,9 +4,7 @@ module V1
 
     swagger_api :index do
       summary 'List all tasks'
-      notes 'This lists all the active tasks'
-      param :query, :page, :integer, :optional, 'page number of results, default 1'
-      param :query, :page_size, :integer, :optional, 'number of results per page, default 25'
+      notes 'This lists all the active tasks for a project'
     end
 
     def index
@@ -19,10 +17,8 @@ module V1
     end
 
     swagger_api :show do #Add show action params, with descriptions
-      summary 'List all tasks'
-      notes 'This lists all the active tasks'
-      param :query, :page, :integer, :optional, 'page number of results, default 1'
-      param :query, :page_size, :integer, :optional, 'number of results per page, default 25'
+      summary 'Show a task'
+      notes 'Shows all info for a given task'
     end
     def show
       begin

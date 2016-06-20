@@ -18,7 +18,6 @@ class Task < ActiveRecord::Base
 
   after_initialize :set_default_state
 
-
   private
   def set_default_state
     self.state ||= :active

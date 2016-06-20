@@ -12,7 +12,7 @@ describe V1::TasksController, :type => :controller do
 
       get :index, id: project.id
       json = JSON::parse(response.body)
-      expect(json.count).to eq(5)
+      expect(json.count).to eq(7)
     end
 
   end
