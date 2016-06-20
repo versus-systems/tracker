@@ -1,6 +1,7 @@
 FactoryGirl.define do
-  factory :project do
+  factory :task do
     name { Faker::Commerce.product_name }
     description { Faker::Company.catch_phrase }
+    state [:active, :pending].sample
   end
 end

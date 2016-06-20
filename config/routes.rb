@@ -3,5 +3,7 @@ Rails.application.routes.draw do
 
   namespace :v1 do
     resources :projects, only: crud
+    resources :tasks, only: [:create, :show]
+    get '/tasks/:id', to: 'tasks#index'
   end
 end
