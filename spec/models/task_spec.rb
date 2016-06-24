@@ -14,6 +14,12 @@ RSpec.describe Task, type: :model do
 
   it "can have two other different states" do 
     task = Task.create(name: "Name 2", description: "Description 2")
+    task[:state] = 'in_progress'
+    task.save
+    expect(task[:state]).to eq("in_progress")
+    task[:state] = 'done'
+    task.save
+    expect(task[:state]).to eq('done')
   end
 
 end
