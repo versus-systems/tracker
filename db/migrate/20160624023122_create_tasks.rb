@@ -3,7 +3,8 @@ class CreateTasks < ActiveRecord::Migration
     create_table :tasks do |t|
       t.string :name
       t.string :description
-      t.references :project, index: true, foreign_key: true
+      t.belongs_to :project, type: :uuid
+      t.references :project, type: :uuid
     end
   end
 end
