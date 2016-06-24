@@ -24,7 +24,8 @@ module V1
       param :query, :page_size, :integer, :optional, 'number of results per page, default 25'
     end
     def index
-
+      tasks = Task.all 
+      render json: tasks
     end
 
     private

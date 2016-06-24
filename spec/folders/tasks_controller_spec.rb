@@ -19,12 +19,13 @@ RSpec.describe V1::TasksController, type: :controller do
   end
 
   describe "GET index" do 
+    let!(:project) {Project.create(name: "Project2", description: "Cool")}
 
     it "gets all of the projects with their tasks" do 
-      task = Task.create!(name: "Name", description: "Desc")
+      task = project.tasks.create!(project_id: project.id, name: "Super cool project", description: "Churro icecream surprise")  
       get :index 
       expect(response).to be_success
-      expect{post :create, parameters}.to change(Task, :count).by(1)
+      expect(Task.count).to eq(1)
     end
 
   end
