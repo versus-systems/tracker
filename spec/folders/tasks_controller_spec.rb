@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe V1::TasksController, type: :controller do 
 
   describe "POST create" do 
-  let!(:project) {Project.create(name: "Project", description: "Cool")}
+    let!(:project) {Project.create(name: "Project", description: "Cool")}
     it "creates a task for a project" do 
       parameters = {
         project_id: project.id,
@@ -15,16 +15,17 @@ RSpec.describe V1::TasksController, type: :controller do
       expect{post :create, parameters}.to change(Task, :count).by(1)
       expect(response).to be_success
     end
+
   end
 
-  # describe "GET index" do 
+  describe "GET index" do 
 
-  #   it "gets all of the projects with their tasks" do 
-  #     project = Project.create!(name: "Project", description: "D")
-  #     get :index 
-  #     expect(response).to be_success
-  #     expect(Project.all.count).to eq(1)
-  #   end
+    it "gets all of the projects with their tasks" do 
+      task = Task.create!(name: "Name", description: "Desc")
+      get :index 
+      expect(response).to be_success
+      expect{post :create, parameters}.to change(Task, :count).by(1)
+    end
 
-  # end
+  end
 end

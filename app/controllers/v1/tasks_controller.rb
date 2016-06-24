@@ -8,12 +8,23 @@ module V1
       param :form, :description, :string, :optional, 'Task description'
     end
     def create
-      task = Task.new(task_params)
+      project = Project.find(params[:project_id])
+      task = project.tasks.new(task_params)
       if task.save
         render json: task, status: 201
       else
         render json: { errors: task.errors.full_messages }, status: 400
       end
+    end
+
+    swagger_api :index do 
+      summary 'List all tasks'
+      notes 'This lists all of the active tasks'
+      param :query, :page, :integer, :optional, 'page number of results, default 1'
+      param :query, :page_size, :integer, :optional, 'number of results per page, default 25'
+    end
+    def index
+
     end
 
     private
