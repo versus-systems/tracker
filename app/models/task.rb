@@ -6,10 +6,11 @@
 #  name        :string
 #  description :string
 #  project_id  :uuid
-#  state       :string           default("todo")
+#  state       :integer          default(0)
 #
 
 class Task < ActiveRecord::Base
   belongs_to :project
-  validates :name, :description, :state, presence: true
+  validates :name, :description, presence: true
+  enum state: %w(todo in_progress done)
 end

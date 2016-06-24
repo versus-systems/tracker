@@ -11,8 +11,8 @@ RSpec.describe Project, type: :model do
   end
 
   it "should have tasks" do 
-    @project.tasks.create({name: "Name 1", description: "Description 1"})
-    @project.tasks.create({name: "Name 2", description: "Description 2"})
+    @project.tasks.create!({name: "Name 1", description: "Description 1"})
+    @project.tasks.create!({name: "Name 2", description: "Description 2"})
     expect(@project.tasks.count).to eq(2)
   end
 end
