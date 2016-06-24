@@ -22,6 +22,9 @@ group :development, :test do
   gem 'mortadella'
   gem 'rack-test'
   gem 'rspec-collection_matchers'
+  gem 'pry'
+  gem 'launchy'
+  gem 'shoulda-matchers'
   gem 'rspec-rails'
   gem 'rubocop', require: false
   gem 'shoulda'
