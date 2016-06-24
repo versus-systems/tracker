@@ -27,6 +27,15 @@ RSpec.describe V1::TasksController, type: :controller do
       expect(response).to be_success
       expect(Task.count).to eq(1)
     end
+  end
 
+  describe "GET show" do 
+    let!(:project) {Project.create(name: "Project 3", description: "Way awesome")}
+
+    it "shows a task" do 
+      task = project.tasks.create!(project_id: project.id, name: "Name", description: "Something")
+      get :show, {:id => task.to_param}
+      expect(assigns(:task)).to eq(task)
+    end
   end
 end
