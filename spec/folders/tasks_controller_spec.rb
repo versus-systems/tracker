@@ -35,7 +35,9 @@ RSpec.describe V1::TasksController, type: :controller do
     it "shows a task" do 
       task = project.tasks.create!(project_id: project.id, name: "Name", description: "Something")
       get :show, {:id => task.to_param}
-      expect(assigns(:task)).to eq(task)
+      parsed_body = JSON.parse(response.body)
+      expect(parsed_body["id"]).to eq(task.id)
+      expect(response).to be_success
     end
   end
 end

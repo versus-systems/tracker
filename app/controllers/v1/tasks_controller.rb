@@ -28,6 +28,15 @@ module V1
       render json: tasks
     end
 
+    swagger_api :show do
+      summary 'Fetch a single Task'
+      param :path, :id, :string, :required, 'Task Id'
+    end
+    def show
+      task = Task.find(params[:id])
+      render json: task
+    end
+
     private
 
     def task_params
