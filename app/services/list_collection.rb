@@ -1,8 +1,9 @@
 class ListCollection
 
-  def initialize page: 1, page_size: 25
+  def initialize page: 1, page_size: 25, project_id: nil
     @page = page
     @page_size = page_size
+    @project_id = project_id
     @errors = []
   end
 

@@ -2,11 +2,11 @@
 #
 # Table name: tasks
 #
-#  id          :integer          not null, primary key
+#  id          :uuid             not null, primary key
 #  name        :string           not null
-#  description :string           not null
-#  state       :integer          default(0)
-#  project_id  :uuid
+#  description :string
+#  state       :integer          default(0), not null
+#  project_id  :uuid             not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
@@ -19,4 +19,8 @@ class Task < ActiveRecord::Base
   belongs_to :project
 
   enum state: [:todo, :in_progress, :done]
+
+  validates :name, presence: true, uniqueness: true
+  validates :state, presence: true
+  validates :project_id, presence: true
 end
