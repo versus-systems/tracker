@@ -33,7 +33,7 @@ module V1
       param :path, :id, :string, :required, 'Task Id'
     end
     def show
-      task = Task.find(params[:id])
+      task = Task.find(params[:id]) 
       render json: task
     end
 

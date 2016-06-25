@@ -10,7 +10,7 @@
 #
 
 class Task < ActiveRecord::Base
-  belongs_to :project
+  belongs_to :project, inverse_of: :tasks
   validates :name, :description, presence: true
   enum state: {
     todo: 0,
