@@ -17,6 +17,7 @@
 class Project < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true
   validates :state, presence: true
+  has_many :tasks, inverse_of: :project, dependent: :destroy
 
   after_initialize :set_default_state
 
