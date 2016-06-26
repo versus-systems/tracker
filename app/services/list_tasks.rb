@@ -11,7 +11,7 @@ class ListTasks < ListCollection
     if @project_id.nil?
       @errors << 'Must provide project ID to query tasks for'
     else
-      @tasks ||= task_respository.where(project_id: project_id)
+      @tasks ||= task_respository.where(project_id: @project_id)
     end
   end
 

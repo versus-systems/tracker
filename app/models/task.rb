@@ -3,10 +3,10 @@
 # Table name: tasks
 #
 #  id          :uuid             not null, primary key
-#  name        :string           not null
+#  name        :string
 #  description :string
-#  state       :integer          default(0), not null
-#  project_id  :uuid             not null
+#  state       :integer          default(0)
+#  project_id  :uuid
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #

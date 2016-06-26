@@ -27,11 +27,18 @@ group :development, :test do
   gem 'shoulda'
   gem 'simplecov'
   gem 'simplecov-html'
+  gem 'ffaker'
+  gem 'pry'
+  gem 'pry-nav'
+  gem 'pry-remote'
+  gem 'pry-rails'
+
 end
 
 group :test do
   gem 'vcr'
   gem 'webmock'
+  gem 'database_cleaner'
 end
 
 group :development do

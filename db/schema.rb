@@ -28,10 +28,10 @@ ActiveRecord::Schema.define(version: 20160615050457) do
   add_index "projects", ["name"], name: "index_projects_on_name", unique: true, using: :btree
 
   create_table "tasks", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
-    t.string   "name",                    null: false
+    t.string   "name"
     t.string   "description"
-    t.integer  "state",       default: 0, null: false
-    t.uuid     "project_id",              null: false
+    t.integer  "state",       default: 0
+    t.uuid     "project_id"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
   end

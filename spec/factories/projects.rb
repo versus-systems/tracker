@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :project do
-    name
-    description 'A sample project'
+    sequence(:name) { |n| "#{FFaker::HipsterIpsum.word.parameterize}#{n}" }
+    description FFaker::HipsterIpsum.words(2)
   end
 end

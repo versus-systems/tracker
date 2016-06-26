@@ -20,10 +20,10 @@ module V1
 
     swagger_api :show do
       summary 'Fetch a single Task'
-      param :path, :id, :string, :required, 'User Id'
+      param :path, :id, :string, :required, 'Task Id'
     end
     def show
-      task = Task.find_by params[:id]
+      task = Task.find params[:id]
       if task.present?
         render json: task
       else
@@ -49,8 +49,7 @@ module V1
     private
 
     def index_params
-      params.require(:project_id)
-      params.permit(:page, :page_size).to_h.symbolize_keys
+      params.permit(:page, :page_size, :project_id).to_h.symbolize_keys
     end
 
     def task_params
