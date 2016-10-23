@@ -1,0 +1,11 @@
+require 'rails_helper'
+
+RSpec.describe Task, type: :model do
+  it { should validate_presence_of :name }
+  it { should validate_presence_of :description }
+
+  it 'progress should be todo by default' do
+    task = create(:task)
+    expect(task.progress).to eq("todo")
+  end
+end
