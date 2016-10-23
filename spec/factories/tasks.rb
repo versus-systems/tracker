@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :task do
-    name
+    name 'bob'
     description 'a task'
   end
 end

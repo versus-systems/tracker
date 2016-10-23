@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :tasks, only: [:show]
 
     namespace :projects do
-      resources :tasks, only: [:index]
+      resources :tasks, only: [:index, :create]
     end
   end
 end
