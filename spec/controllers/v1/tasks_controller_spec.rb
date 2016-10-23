@@ -2,14 +2,14 @@ require 'rails_helper'
 
 RSpec.describe V1::TasksController, type: :controller do
   describe 'GET task/:id' do
-    it 'returns a 200' do
+    it 'returns a 200 if task exists' do
       task = "I am a task"
       Task.stub(:find_by).and_return(task)
       get :show, id: 1
       expect(response).to have_http_status(200)
     end
 
-    it 'return a 404 if no resource' do
+    it 'return a 404 if task does not exist' do
       Task.stub(:find_by).and_return(nil)
       get :show, id: 1
       expect(response).to have_http_status(404)
