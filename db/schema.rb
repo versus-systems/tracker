@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20161023011751) do
     t.integer  "progress",    default: 0
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
-    t.integer  "project_id"
+    t.uuid     "project_id"
   end
 
   add_index "tasks", ["project_id"], name: "index_tasks_on_project_id", using: :btree

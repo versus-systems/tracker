@@ -28,6 +28,7 @@ module V1
         head(422)
       else
         @project.tasks << @task
+        render json: @task
       end
     end
 
