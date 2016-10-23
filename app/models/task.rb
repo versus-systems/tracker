@@ -8,9 +8,16 @@
 #  progress    :integer          default(0)
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  project_id  :integer
+#
+# Indexes
+#
+#  index_tasks_on_project_id  (project_id)
 #
 
 class Task < ActiveRecord::Base
+  belongs_to :project
+
   validates_presence_of :name
   validates_presence_of :description
 
