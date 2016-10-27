@@ -82,11 +82,13 @@ module V1
     end
 
     def task_params
-      params.require(:task).permit(:project_id, :name, :description, :state)
+      params.require(:task)
+            .permit(:project_id, :name, :description, :state)
+            .reject { |_, v| v.blank? }
     end
 
     def set_task
-      @task = Task.find_by params[:id]
+      @task = Task.find_by_id params[:id]
     end
   end
 end

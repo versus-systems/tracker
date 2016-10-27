@@ -26,10 +26,6 @@ class Task < ActiveRecord::Base
     completed: 30
   }
 
-  def project_name
-    project.name
-  end
-
   private
 
   def set_default_state
