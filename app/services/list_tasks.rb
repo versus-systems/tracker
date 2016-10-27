@@ -8,7 +8,7 @@ class ListTasks < ListCollection
   end
 
   def collection
-    @tasks ||= task_respository.todo
+    @tasks ||= task_respository
   end
 
 end
