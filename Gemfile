@@ -13,6 +13,7 @@ gem 'swagger-docs'
 
 group :development, :test do
   gem 'active_cucumber'
+  gem 'byebug'
   gem 'capybara'
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
