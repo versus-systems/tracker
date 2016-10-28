@@ -6,7 +6,7 @@ module V1
     swagger_api :index do
       summary 'List all tasks'
       notes 'This lists all the tasks for a task'
-      param :project_id, :uuid
+      param :query, :project_id, :string, :optional, 'Governing Project'
       param :query, :page, :integer, :optional, 'page number of results, default 1'
       param :query, :page_size, :integer, :optional, 'number of results per page, default 25'
     end
@@ -34,6 +34,7 @@ module V1
     swagger_api :create do
       summary 'Creates a new Task'
       param :form, :name, :string, :required, 'Task designation'
+      param :form, :project_id, :string, :required, 'Governing Project'
       param :form, :description, :string, :optional, 'Task description'
     end
     def create
@@ -48,6 +49,7 @@ module V1
     swagger_api :update do
       summary 'Updates an existing Task'
       param :path, :id, :string, :required, 'Task Id'
+      param :form, :project_id, :string, :optional, 'Governing Project'
       param :form, :name, :string, :optional, 'Task designation'
       param :form, :description, :string, :optional, 'Task description'
     end
