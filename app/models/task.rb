@@ -23,8 +23,10 @@ class Task < ActiveRecord::Base
   enum state: {
     todo: 10,
     in_progress: 20,
-    completed: 30
+    done: 30
   }
+
+  scope :incomplete, -> { where.not(id: done) }
 
   private
 

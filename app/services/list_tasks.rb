@@ -8,7 +8,7 @@ class ListTasks < ListCollection
   end
 
   def collection
-    @tasks ||= task_respository
+    @tasks ||= task_respository.incomplete
   end
 
 end
