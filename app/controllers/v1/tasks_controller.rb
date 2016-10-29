@@ -84,9 +84,7 @@ module V1
     end
 
     def task_params
-      params.require(:task)
-            .permit(:project_id, :name, :description, :state)
-            .reject { |_, v| v.blank? }
+      params.require(:task).permit(:project_id, :name, :description, :state)
     end
 
     def set_task
