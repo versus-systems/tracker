@@ -22,6 +22,15 @@ class WorldDriver
     ActiveCucumber.create_one Project, data
   end
 
+
+  def given_tasks  data
+    ActiveCucumber.create_many Task,data
+  end
+
+  def given_task data
+    ActiveCucumber.create_one Task, data
+  end
+
   def check_unexpected_errors
     errors.present? && fail("Unexpected errors happened:\n #{errors.join("\n")}")
   end
@@ -31,5 +40,8 @@ class WorldDriver
     expect(error_included).to eq true
     errors.delete_if { |error| error.include? error_message }
   end
+
+
+
 
 end
