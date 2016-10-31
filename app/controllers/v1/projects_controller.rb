@@ -12,6 +12,7 @@ module V1
       projects, errors = ListProjects.new(index_params).call
       if errors.any?
         render json: { errors: errors }, status: 400
+
       else
         render json: projects
       end
@@ -22,7 +23,7 @@ module V1
       param :path, :id, :string, :required, 'User Id'
     end
     def show
-      project = Project.find_by params[:id]
+      project = Project.find_by_id params[:id]
       if project.present?
         render json: project
       else

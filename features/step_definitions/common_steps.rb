@@ -1,6 +1,16 @@
 When(/^I request the (.*) list$/) do |collection_type|
   d.request_list collection_type, Hash.new
 end
+When(/^I request the (.*) list of (.*):$/) do |collection_type,resource_type,resource_id|
+  resource_id = vertical_table resource_id
+  d.request_resource_list collection_type, resource_id[:project_id],resource_type
+end
+When(/^I request a (.*):$/) do |collection_type,param|
+  param = vertical_table param
+
+  d.request_by_id collection_type, param[:id]
+end
+
 
 When(/^I request the (.*) list with parameters:$/) do |collection_type, params|
   params = vertical_table params
@@ -31,5 +41,5 @@ end
 
 Then(/^I get the data:$/) do |string|
   data = eval string
-  expect(HashDiff.diff d.results, data).to be_empty
+  expect(HashDiff.diff d.results.except!(:updated_at, :created_at), data).to be_empty
 end
