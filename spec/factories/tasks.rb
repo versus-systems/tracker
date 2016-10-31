@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :task do
-    project ""
+    project
     name "MyString"
     description "MyText"
     state 1
