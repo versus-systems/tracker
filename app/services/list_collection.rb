@@ -1,9 +1,10 @@
 class ListCollection
+  include ActiveModel::Model
 
-  def initialize page: 1, page_size: 25
-    @page = page
-    @page_size = page_size
-    @errors = []
+  attr_accessor :page, :page_size
+
+  def errors
+    @errors ||= []
   end
 
   def call
@@ -46,7 +47,5 @@ class ListCollection
   def serialized_collection
     pager.results.map { |result| result_serializer.new(result).attributes }
   end
-
-  attr_reader :page, :page_size, :errors
 
 end
