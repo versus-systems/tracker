@@ -22,9 +22,11 @@ class Project < ActiveRecord::Base
 
   enum state: {
     disabled: -1,
-    active: 10,
+    active:   10,
     archived: 20
   }
+
+  has_many :tasks
 
   private
 
