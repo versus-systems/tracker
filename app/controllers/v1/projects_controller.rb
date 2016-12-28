@@ -76,6 +76,21 @@ module V1
       end
     end
 
+    def list_tasks
+      project = Project.find_by(id: params[:id])
+      tasks = project.tasks
+      render json: tasks, each_serializer: V1::TaskSerializer
+    end
+
+    def create_task
+      task = Task.new(name: params[:name], project_id: params[:project_id])
+      if task.save
+        render json: task, serializer: V1::TaskSerializer
+      else
+        render status: 400
+      end
+    end
+
     private
 
     def index_params

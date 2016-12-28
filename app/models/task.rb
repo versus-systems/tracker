@@ -29,6 +29,11 @@ class Task < ActiveRecord::Base
 
   after_initialize :set_default_state
 
+  def update_progress!(state)
+    self.state = state
+    self.save!
+  end
+
   def set_default_state
     self.state ||= "todo"
   end

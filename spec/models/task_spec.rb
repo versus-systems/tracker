@@ -27,4 +27,10 @@ describe Task do
   it "does not accept an invalid string as a state" do
     expect(Task.new(name: "Do this thing", project_id: SecureRandom.uuid, state: "blargh")).to be_invalid
   end
+
+  it "should be able to update it's state" do
+    task.update_progress!("in-progress")
+    task.reload
+    expect(task.state).to eql("in-progress")
+  end
 end
