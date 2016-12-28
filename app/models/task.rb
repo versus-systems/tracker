@@ -7,6 +7,8 @@
 #  description :text
 #  state       :string
 #  project_id  :uuid
+#  created_at  :datetime
+#  updated_at  :datetime
 #
 # Indexes
 #
