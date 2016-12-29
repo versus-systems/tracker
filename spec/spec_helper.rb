@@ -14,29 +14,35 @@
 #
 # The `.rspec` file also contains a few flags that are not defaults but that
 # users commonly want.
-#
+
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
+
+
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
+
+  # config.before(:each) do
+  #   stub_request(:post, "https://api.twilio.com/2010-04-01/Accounts/ACb44804bc4b710ac8dba26b98b0c60eae/Messages.json").
+  #     with(:headers => {'Accept'=>'application/json', 'Accept-Charset'=>'utf-8', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'Basic QUNiNDQ4MDRiYzRiNzEwYWM4ZGJhMjZiOThiMGM2MGVhZTo2MmI1NTUwOTQwMzEwZjRmYzU3YmExOTg0NDcyYmE3MA==', 'Content-Type'=>'application/x-www-form-urlencoded', 'User-Agent'=>'twilio-ruby/4.11.1 (ruby/x86_64-darwin16 2.3.0-p0)'}).
+  #   to_return(:status => 200, :body => "", :headers => {})
+  # end
+
+  # config.before(:each) do
+  #   stub_request(:post, "https://api.twilio.com/2010-04-01/Accounts/ACb44804bc4b710ac8dba26b98b0c60eae/Messages.json").
+  #    with(:body => {"Body"=>"Hooray! Task Complete!", "From"=>"+15412554232", "To"=>"+15624726279"},
+  #         :headers => {'Accept'=>'application/json', 'Accept-Charset'=>'utf-8', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'Basic QUNiNDQ4MDRiYzRiNzEwYWM4ZGJhMjZiOThiMGM2MGVhZTo2MmI1NTUwOTQwMzEwZjRmYzU3YmExOTg0NDcyYmE3MA==', 'Content-Type'=>'application/x-www-form-urlencoded', 'User-Agent'=>'twilio-ruby/4.11.1 (ruby/x86_64-darwin16 2.3.0-p0)'}).
+  #    to_return(:status => 200, :body => "", :headers => {})
+  # end
+
   config.expect_with :rspec do |expectations|
-    # This option will default to `true` in RSpec 4. It makes the `description`
-    # and `failure_message` of custom matchers include text for helper methods
-    # defined using `chain`, e.g.:
-    #     be_bigger_than(2).and_smaller_than(4).description
-    #     # => "be bigger than 2 and smaller than 4"
-    # ...rather than:
-    #     # => "be bigger than 2"
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
 
   # rspec-mocks config goes here. You can use an alternate test double
   # library (such as bogus or mocha) by changing the `mock_with` option here.
   config.mock_with :rspec do |mocks|
-    # Prevents you from mocking or stubbing a method that does not exist on
-    # a real object. This is generally recommended, and will default to
-    # `true` in RSpec 4.
     mocks.verify_partial_doubles = true
   end
 

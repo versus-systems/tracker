@@ -76,6 +76,30 @@ module V1
       end
     end
 
+    swagger_api :list_tasks do
+      summary "List all of a project's tasks"
+      notes "This lists all of the selected project's the active tasks"
+      param :id
+    end
+    def list_tasks
+      project = Project.find_by(id: params[:id])
+      tasks = project.tasks
+      render json: tasks, each_serializer: V1::TaskSerializer
+    end
+
+    swagger_api :create do
+      summary 'Creates a new Task for the selected Project'
+      param :name, :project_id
+    end
+    def create_task
+      task = Task.new(name: params[:name], project_id: params[:project_id])
+      if task.save
+        render json: task, serializer: V1::TaskSerializer
+      else
+        render status: 400
+      end
+    end
+
     private
 
     def index_params
