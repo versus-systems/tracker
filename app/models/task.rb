@@ -34,6 +34,29 @@ class Task < ActiveRecord::Base
     self.save!
   end
 
+  def send_completion_sms?
+    if self.state == "done"
+      message = "Hooray! Task Complete!"
+      send_message_via_sms(message)
+      true
+    else
+      false
+    end
+  end
+
+  def send_message_via_sms(message)
+    client = Twilio::REST::Client.new(
+      ENV['TWILIO_ACCOUNT_SID'],
+      ENV['TWILIO_AUTH_TOKEN']
+    )
+
+    client.messages.create(
+      from: ENV['TWILIO_NUMBER'],
+      to: ENV['MY_NUMBER'],
+      body: message
+    )
+  end
+
   def set_default_state
     self.state ||= "todo"
   end

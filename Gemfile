@@ -25,6 +25,7 @@ group :development, :test do
   gem 'rack-test'
   gem 'rspec-collection_matchers'
   gem 'rspec-rails'
+  gem 'rspec-mocks'
   gem 'rubocop', require: false
   gem 'shoulda'
   gem 'shoulda-matchers'

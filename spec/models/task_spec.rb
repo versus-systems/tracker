@@ -33,4 +33,12 @@ describe Task do
     task.reload
     expect(task.state).to eql("in-progress")
   end
+
+  it "should send an sms message if the task is 'done'" do
+    message = "Hello!"
+    task.update_progress!("done")
+    task.reload
+
+    expect(task.send_completion_sms?).to eql(true) 
+  end
 end
