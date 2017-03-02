@@ -37,4 +37,5 @@ end
 group :development do
   gem 'annotate'
   gem 'spring'
+  gem 'pry-rails'
 end

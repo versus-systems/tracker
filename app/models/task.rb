@@ -17,9 +17,10 @@ class Task < ActiveRecord::Base
   validates :state, presence: true
 
   enum state: {
-    complete: -1,
+    removed: -1,
     active: 10,
-    in_progress: 20
+    in_progress: 20,
+    complete: 30
   }
 
 end
