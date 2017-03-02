@@ -8,6 +8,7 @@
 #  state       :integer          default(10)
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  phone       :string
 #
 # Indexes
 #

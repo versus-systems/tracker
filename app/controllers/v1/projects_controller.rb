@@ -83,7 +83,7 @@ module V1
     end
 
     def project_params
-      params.require(:project).permit :name, :description
+      params.require(:project).permit :name, :description, :phone
     end
   end
 end

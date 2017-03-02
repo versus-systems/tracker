@@ -16,6 +16,7 @@ class Task < ActiveRecord::Base
   validates :name, presence: true
   validates :state, presence: true
   validates :project_id, presence: true
+  after_commit :send_message, on: :update
 
   enum state: {
     removed: -1,
@@ -24,4 +25,9 @@ class Task < ActiveRecord::Base
     done: 30
   }
 
+
+  def send_message
+    return unless state == 'done'
+    TextMessenger.send_text(self)
+  end
 end
