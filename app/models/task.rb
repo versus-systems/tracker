@@ -19,9 +19,9 @@ class Task < ActiveRecord::Base
 
   enum state: {
     removed: -1,
-    active: 10,
+    todo: 10,
     in_progress: 20,
-    complete: 30
+    done: 30
   }
 
 end

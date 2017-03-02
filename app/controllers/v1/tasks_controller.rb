@@ -36,8 +36,7 @@ module V1
       param :form, :description, :string, :optional, 'Task description'
     end
     def create
-      project = Project.find_by_id params[:project_id]
-      task = project.tasks.new task_params
+      task = Task.new task_params
       if task.save
         render json: task, status: 201
       else
@@ -82,11 +81,11 @@ module V1
     private
 
     def index_params
-      params.permit(:page, :page_size).to_h.symbolize_keys
+      params.permit(:page, :page_size, :project_id).to_h.symbolize_keys
     end
 
     def task_params
-      params.require(:task).permit :name, :description, :state
+      params.require(:task).permit :name, :description, :state, :project_id
     end
   end
 end

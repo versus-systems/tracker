@@ -27,6 +27,7 @@ group :development, :test do
   gem 'shoulda'
   gem 'simplecov'
   gem 'simplecov-html'
+  gem 'pry-rails'
 end
 
 group :test do
@@ -37,5 +38,4 @@ end
 group :development do
   gem 'annotate'
   gem 'spring'
-  gem 'pry-rails'
 end

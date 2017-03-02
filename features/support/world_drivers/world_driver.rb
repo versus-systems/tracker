@@ -8,11 +8,11 @@ class WorldDriver
     @errors = []
   end
 
-  def given_projects count: nil, data: nil
+  def given_objects name: nil, count: nil, data: nil
     if count.present?
-      FactoryGirl.create_list :project, count.to_i
+      FactoryGirl.create_list name.to_sym, count.to_i
     elsif data.present?
-      ActiveCucumber.create_many Project, data
+      ActiveCucumber.create_many name.capitalize.constantize, data
     else
       fail 'No projects given'
     end
@@ -20,6 +20,10 @@ class WorldDriver
 
   def given_project data
     ActiveCucumber.create_one Project, data
+  end
+
+  def given_task data
+    ActiveCucumber.create_one Task, data
   end
 
   def check_unexpected_errors
