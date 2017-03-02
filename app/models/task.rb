@@ -15,6 +15,7 @@ class Task < ActiveRecord::Base
   belongs_to :project
   validates :name, presence: true
   validates :state, presence: true
+  validates :project_id, presence: true
 
   enum state: {
     removed: -1,

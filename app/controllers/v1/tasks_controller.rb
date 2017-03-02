@@ -36,7 +36,8 @@ module V1
       param :form, :description, :string, :optional, 'Task description'
     end
     def create
-      task = Task.new task_params
+      project = Project.find_by_id params[:project_id]
+      task = project.tasks.new task_params
       if task.save
         render json: task, status: 201
       else
@@ -49,10 +50,11 @@ module V1
       param :path, :id, :string, :required, 'Task Id'
       param :form, :name, :string, :optional, 'Task designation'
       param :form, :description, :string, :optional, 'Task description'
-      param :form, :state, :integer, :optional, 'Task status'
+      param :form, :state, :string, :optional, 'Task status'
     end
     def update
-      task = Task.find_by_id params[:id]
+      project = Project.find_by_id params[:project_id]
+      task = project.tasks.find_by_id params[:id]
       if task.present? && task.update_attributes(task_params)
         render json: task
       elsif task.present?
@@ -84,7 +86,7 @@ module V1
     end
 
     def task_params
-      params.require(:task).permit :name, :description
+      params.require(:task).permit :name, :description, :state
     end
   end
 end

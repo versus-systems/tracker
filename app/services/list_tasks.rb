@@ -8,7 +8,7 @@ class ListTasks < ListCollection
   end
 
   def collection
-    @tasks ||= task_repository.all.reject{|t| t.state == 'removed'}
+    @tasks ||= task_repository.where.not(state: -1)
   end
 
 end
