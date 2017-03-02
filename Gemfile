@@ -10,6 +10,7 @@ gem 'rack-cors'
 gem 'rails', '4.2.6'
 gem 'rails-api'
 gem 'swagger-docs'
+gem 'twilio-ruby', '~> 4.11.1'
 
 group :development, :test do
   gem 'active_cucumber'
@@ -27,6 +28,8 @@ group :development, :test do
   gem 'shoulda'
   gem 'simplecov'
   gem 'simplecov-html'
+  gem 'pry-rails'
+  gem 'dotenv-rails'
 end
 
 group :test do
