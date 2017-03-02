@@ -19,3 +19,4 @@
 # Ignore gemset files
 /.ruby-gemset
 /.ruby-version
+.env

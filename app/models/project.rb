@@ -8,6 +8,7 @@
 #  state       :integer          default(10)
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  phone       :string
 #
 # Indexes
 #
@@ -15,6 +16,7 @@
 #
 
 class Project < ActiveRecord::Base
+  has_many :tasks
   validates :name, presence: true, uniqueness: true
   validates :state, presence: true
 
