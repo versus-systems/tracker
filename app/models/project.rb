@@ -14,6 +14,7 @@
 #  index_projects_on_name  (name) UNIQUE
 #
 
+
 class Project < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true
   validates :state, presence: true

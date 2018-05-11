@@ -7,10 +7,14 @@ default: &default
 development:
   <<: *default
   database: db/tracker_development
+  username: postgres
+  password: postgres
 
 test: &test
   <<: *default
   database: db/tracker_test
+  username: postgres
+  password: postgres
 
 production:
   <<: *default
