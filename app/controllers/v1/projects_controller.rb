@@ -1,5 +1,7 @@
 module V1
   class ProjectsController < ApplicationController
+    include Swagger::Docs::Methods
+
     swagger_controller :projects, 'Projects'
 
     swagger_api :index do

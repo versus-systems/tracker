@@ -1,23 +1,27 @@
 class V1::TasksController <  ApplicationController
 
-    swagger_api :create do
-        summary 'Creates a new Task'
-        param :form, :name, :string, :required, 'Task name'
-        param :form, :description, :string, :required, 'Task description'
-    end
+  def index
+    tasks = Task.where(project_id: params[:project_id])
+    render json: tasks
+  end
 
-    def def create
-      task = Task.new project_params
-      if task.save
-        render json: task, status: 201
-      else
-        render json: { errors: project.errors.full_messages }, status: 400
-      end
-    end
+  def show
+    task = Task.find_by(id: params[:id])
+    render json: task
+  end
 
-    private
-
-    def task_params
-        params.require(:task).permit :name, :description
+  def create
+    task = Task.new project_params
+    if task.save
+      render json: task, status: 201
+    else
+      render json: { errors: task.errors.full_messages }, status: 400
     end
+  end
+
+  private
+
+  def task_params
+      params.require(:task).permit :name, :description, :project_id
+  end
 end

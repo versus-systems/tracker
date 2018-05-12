@@ -19,6 +19,10 @@ class Project < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true
   validates :state, presence: true
 
+  attr_accessor :tasks
+    
+  has_many :tasks
+  
   after_initialize :set_default_state
 
   enum state: {

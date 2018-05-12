@@ -19,11 +19,16 @@ class Task < ActiveRecord::Base
     validates :name, presence: true
     validates :description, presence: true
     validates :state, presence: true
+    validates :project_id, presence: true
+
+    attr_accessor :project
+
+    belongs_to :project
 
     after_initialize :set_default_state
 
     private
     def set_default_state
         self.state ||= :todo
-      end
+    end
 end
