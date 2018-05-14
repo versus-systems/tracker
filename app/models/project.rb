@@ -15,13 +15,14 @@
 #
 
 
+
+
 class Project < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true
   validates :state, presence: true
-
-  attr_accessor :tasks
     
-  has_many :tasks
+  has_many :tasks, dependent: :destroy
+  accepts_nested_attributes_for :tasks
   
   after_initialize :set_default_state
 

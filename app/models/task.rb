@@ -9,6 +9,7 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  project_id  :uuid
+#  aasm_state  :string
 #
 # Foreign Keys
 #
@@ -25,10 +26,30 @@ class Task < ActiveRecord::Base
 
     belongs_to :project
 
-    after_initialize :set_default_state
+    include AASM
 
-    private
-    def set_default_state
-        self.state ||= :todo
+    aasm column: :state do
+        state :todo, initial: true
+        state :in_progress
+        state :done
+
+        event :start do
+            transitions from: :todo, to: :in_progress
+        end
+
+        event :unstart do
+            transitions from: :in_progress, to: :todo
+        end
+       
+        event :complete, after:  :notify do
+            transitions from: :in_progress, to: :done
+        end  
     end
+    
+    private
+
+    def notify
+        "Task #{id} is completed!"             
+    end
+
 end
